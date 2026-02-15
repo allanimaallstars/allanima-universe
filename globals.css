@@ -1,0 +1,148 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ═══════════════════════════════════════════════════════
+   ALLANIMA Universe — Cosmic Theme
+   ═══════════════════════════════════════════════════════ */
+
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600;700;800&family=IBM+Plex+Sans+Thai:wght@300;400;500;600;700&family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #06040c;
+  color: #e2e0f0;
+  font-family: 'IBM Plex Sans Thai', 'IBM Plex Sans', sans-serif;
+  min-height: 100vh;
+}
+
+/* ── Scrollbar ──────────────────────────────────────── */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(139,92,246,0.2); border-radius: 2px; }
+
+/* ── Animations ─────────────────────────────────────── */
+@keyframes fadeSlide {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 4px currentColor; }
+  50% { box-shadow: 0 0 8px currentColor; }
+}
+
+.animate-fadeSlide { animation: fadeSlide 0.4s ease; }
+.animate-fadeSlideQuick { animation: fadeSlide 0.25s ease; }
+
+/* ── Nav Strip ──────────────────────────────────────── */
+.navstrip {
+  display: flex;
+  gap: 2px;
+  overflow-x: auto;
+  padding: 8px 10px;
+  background: rgba(6,4,12,0.95);
+  border-bottom: 1px solid rgba(139,92,246,0.08);
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.navstrip::-webkit-scrollbar { display: none; }
+
+.navbtn {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 6px 10px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 11px;
+  font-family: inherit;
+  white-space: nowrap;
+  transition: all 0.2s;
+  background: transparent;
+  color: #555;
+}
+.navbtn:hover { background: rgba(139,92,246,0.12); }
+.navbtn.active {
+  background: rgba(139,92,246,0.15);
+  color: #c4b5fd;
+  font-weight: 600;
+}
+
+/* ── Card Component ─────────────────────────────────── */
+.card {
+  background: rgba(15,10,30,0.7);
+  border: 1px solid rgba(139,92,246,0.08);
+  border-radius: 10px;
+  padding: 14px 16px;
+  backdrop-filter: blur(8px);
+  transition: all 0.25s;
+}
+.card-hover:hover {
+  border-color: rgba(139,92,246,0.25);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 20px rgba(139,92,246,0.08);
+}
+.card-hover { cursor: pointer; }
+
+/* ── Tag Component ──────────────────────────────────── */
+.tag {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 20px;
+  font-size: 10px;
+  font-weight: 500;
+}
+
+/* ── Notion Link ────────────────────────────────────── */
+.notion-link {
+  font-size: 10px;
+  color: #7c3aed;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 6px;
+  transition: color 0.2s;
+}
+.notion-link:hover { color: #a78bfa; }
+
+/* ── Stars Canvas ───────────────────────────────────── */
+.stars-canvas {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* ── Loader ─────────────────────────────────────────── */
+.loader-ring {
+  width: 32px;
+  height: 32px;
+  border: 2px solid rgba(139,92,246,0.15);
+  border-top-color: #a78bfa;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+/* ── Status Badge ───────────────────────────────────── */
+.status-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+}
+.status-dot.live { background: #34d399; box-shadow: 0 0 6px #34d399; }
+.status-dot.loading { background: #f59e0b; }
+.status-dot.error { background: #ef4444; }
